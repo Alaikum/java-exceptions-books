@@ -3,33 +3,40 @@ package org.lessons.java.exceptions.books;
 public class Book {
 
 //	titolo, numero pagine, autore, editore
-	private String titolo, autore, editore;
+	private String titolo, autore, editore,valida="";
 	private int numeroPagine;
 
 	public Book(String titolo, String autore, String editore, int numeroPagine) throws PageException, EmptyLine {
 		super();
 
-		validateLine(titolo);
-		this.titolo = titolo;
-
-		validateLine(autore);
-		this.autore = autore;
-
-		validateLine(editore);
-		this.editore = editore;
-
 		validatePag(numeroPagine);
 		this.numeroPagine = numeroPagine;
+		validateLine(titolo,"titolo");
+		this.titolo = titolo;
+
+		validateLine(autore,"autore");
+		this.autore = autore;
+
+		validateLine(editore,"editore");
+		this.editore = editore;
+		validaFinale();
+
 	}
 
-	public void validatePag(int n) throws PageException {
+	public void validatePag(int n)  {
 		if (n < 0)
-			throw new PageException();
+			valida+=" Numero Negativo";
 	}
 
-	public void validateLine(String s) throws EmptyLine {
+	public void validateLine(String s,String n) {
 		if (s.trim().length() < 1)
-			throw new EmptyLine();
+//			throw new EmptyLine(n);
+			valida+=" -Campo "+n+" Vuoto";
+	}
+	public void validaFinale() throws EmptyLine {
+		if (valida.length()>0) {
+			throw new EmptyLine(valida);
+		}
 	}
 
 	public String getTitolo() {
@@ -37,7 +44,7 @@ public class Book {
 	}
 
 	public void setTitolo(String titolo) throws EmptyLine {
-		validateLine(titolo);
+		validateLine(titolo,"titolo");
 		this.titolo = titolo;
 	}
 
@@ -46,7 +53,7 @@ public class Book {
 	}
 
 	public void setAutore(String autore) throws EmptyLine {
-		validateLine(autore);
+		validateLine(autore,"autore");
 		this.autore = autore;
 	}
 
@@ -55,7 +62,7 @@ public class Book {
 	}
 
 	public void setEditore(String editore) throws EmptyLine {
-		validateLine(editore);
+		validateLine(editore,"editore");
 		this.editore = editore;
 	}
 

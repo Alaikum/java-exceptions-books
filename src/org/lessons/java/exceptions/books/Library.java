@@ -30,10 +30,8 @@ public class Library {
 
 			try {
 				b[i] = new Book(titolo, autore, editore, numeroPagine);
-			} catch (PageException e) {
-				System.out.println("Il formato del numero di pagine non è valido: " + e.getMessage());
-				return;
-			} catch (EmptyLine e) {
+			
+			} catch (Exception e) {
 				System.out.println("Attenzione: " + e.getMessage());
 				return;
 			}
