@@ -8,13 +8,13 @@ public class Library {
 		// TODO Auto-generated method stub
 
 		int numLib, numeroPagine;
-		String titolo = "we", autore, editore;
+		String titolo , autore, editore;
 		Scanner s = new Scanner(System.in);
 
 		System.out.print("Quanti libri vuoi inserire? ");
 		numLib = Integer.parseInt(s.nextLine());
 		Book[] b = new Book[numLib];
-		
+	
 
 		for (int i = 0; i < b.length; i++) {
 //			titolo, numero pagine, autore, editore
@@ -33,11 +33,12 @@ public class Library {
 			
 			} catch (Exception e) {
 				System.out.println("Attenzione: " + e.getMessage());
-				return;
+				System.out.println("---RICOMINCIAMO:---");
+				i--;
 			}
 
 		}
-
+		
 		
 		s.close();
 
