@@ -44,7 +44,9 @@ public class Book {
 	}
 
 	public void setTitolo(String titolo) throws EmptyLine {
+		this.valida="";
 		validateLine(titolo,"titolo");
+		validaFinale();
 		this.titolo = titolo;
 	}
 
@@ -53,7 +55,9 @@ public class Book {
 	}
 
 	public void setAutore(String autore) throws EmptyLine {
+		this.valida="";
 		validateLine(autore,"autore");
+		validaFinale();
 		this.autore = autore;
 	}
 
@@ -62,7 +66,9 @@ public class Book {
 	}
 
 	public void setEditore(String editore) throws EmptyLine {
+		this.valida="";
 		validateLine(editore,"editore");
+		validaFinale();
 		this.editore = editore;
 	}
 
@@ -70,8 +76,10 @@ public class Book {
 		return numeroPagine;
 	}
 
-	public void setNumeroPagine(int numeroPagine) throws PageException {
+	public void setNumeroPagine(int numeroPagine) throws  EmptyLine {
+		this.valida="";
 		validatePag(numeroPagine);
+		validaFinale();
 
 		this.numeroPagine = numeroPagine;
 	}
